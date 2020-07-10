@@ -10,7 +10,7 @@ function readURL(input) {
         };
         reader.readAsDataURL(input.files[0]);
         init().then(function() {
-            postImagesForCartoon(input.files[0].name);
+            postImagesForCartoon(input.files[0].name, 1);
 
             predict();
             $('#loading').hide();

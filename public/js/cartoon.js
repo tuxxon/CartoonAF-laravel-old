@@ -495,9 +495,11 @@ function postImagesForCartoon(filename) {
                          * Whenever the S3 or lambda has a long break time,
                          * 'Net error' occurs..
                          */
-                        sleep(300).then(() => {
-                            postImagesForCartoon(filename);
-                        });
+                        if (retry > 0) {
+	                        sleep(300).then(() => {
+	                            postImagesForCartoon(filename, --retry);
+	                        });
+                        }
                     },
                 });
             });
